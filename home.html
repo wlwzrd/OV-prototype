@@ -24,74 +24,176 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-        <div class="well col-md-12">
-          <!--SUGGESTION ENGINE-->
-          <div class="row">
-            <div id="bloodhound" class="bloodhound">
-            <center>
-              <input class="typeahead" type="text" placeholder="Busca tu empresa ">
-            </center>
-           </div>
-          </div><!--ROW-->
-          <!--FORM-->
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-              <form class="form">
+     
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">SIMULADOR</div>
+            <div class="panel-body">
+              
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div id="bloodhound" class="bloodhound">
+                    <input class="typeahead" type="text" placeholder="Busca tu empresa ">
+                    
+                  </div>
+                </div>
+              </div><!--ROW-->
+
+              <form class="form-horizontal" role="form">
+
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Monto a solicitar $">
+                  <div class="col-md-10">
+                   <input type="text" class="form-control" placeholder="Monto a solicitar">
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <select class="form-control">
-                    <option disabled selected hidden>Plazo en Meses</option>
-                    <option>6</option>
-                    <option>9</option>
-                    <option>12</option>
-                    <option>18</option>
-                    <option>24</option>
-                    <option>30</option>
-                  </select>
+
+                  <div class="col-md-5">
+                    <select class="form-control">
+                      <option disabled selected hidden>Plazo en Meses</option>
+                      <option>6</option>
+                      <option>9</option>
+                      <option>12</option>
+                      <option>18</option>
+                      <option>24</option>
+                      <option>30</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-5">
+                    <select class="form-control">
+                      <option disabled selected hidden>Tipo de Crédito</option>
+                      <option>Libre Inversión</option>
+                      <option>Compra de Cartera</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <label>Tipo de Crédito  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" value="option1"> Libre Inversión
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" value="option2"> Compra de Cartera
-                  </label>
+                  <div class="col-md-11">
+                      <select class="form-control">
+                      <option disabled selected hidden>Seguro de Cuota Protegida </option>
+                      <option>Si</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
 
+              <div class="row">
+                <div class="col-md-10">
+                  <center>
+                    <label><big>Cuota Mensual: </big> $654.320</label>
+                  </center>
+                </div>
+              </div><!--ROW-->              
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="panel panel-danger">
+            <div class="panel-heading">SOLICITUD</div>
+            <div class="panel-body">
+              <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                  <div class="col-md-4">
+                   <input type="text" class="form-control" placeholder="Nombre">
+                  </div>
+                  <div class="col-md-4 col-md-offset-1">
+                   <input type="text" class="form-control" placeholder="Apellido">
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <label>Seguro de Cuota Protegida  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" value="option1"> Si
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" value="option2"> No
-                  </label>
-
+                  <div class="col-md-11">
+                      <select class="form-control">
+                      <option disabled selected hidden>Tipo de Documento</option>
+                      <option>C.C</option>
+                      <option>C.E</option>
+                    </select>
+                  </div>
                 </div>
 
-               
+                <div class="form-group">
+                  <div class="col-md-10">
+                   <input type="text" class="form-control" placeholder="Número de Documento">
+                  </div>
+                </div>
 
+                <div class="form-group">
+                  <div class="col-md-10">
+                   <input type="text" class="form-control" placeholder="Ingresos">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-10">
+                   <input type="text" class="form-control" placeholder="Descuentos de Nomina">
+                  </div>
+                </div>
 
               </form>
+
+              <div class="row">
+                <div class="col-md-10">
+                  <center>
+                    <label><big>Mensaje: </big>Aceptado!</label>
+                  </center>
+                </div>
+              </div><!--ROW--> 
+
             </div>
-          </div><!--ROW-->
-
-          <div class="row">
-  
           </div>
+        </div>
 
-        </div><!--WELL-->
+        <div class="col-md-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">DETALLE</div>
+            <div class="panel-body">
+              <div class="col-md-11">
+                <p><big>Deudas: </big>Aqui podras seleccionar las deudas que te gustaría que compremos.</p>
+              </div>
+              <div class="col-md-11">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Tipo</th>
+                      <th>Cuota</th>
+                      <th>Incluir?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>1</th>
+                      <th>CP</th>
+                      <th>$320.000</th>
+                      <th><input type="checkbox" value="option1" aria-label="..."></th>
+                    </tr>
+                    <tr>
+                      <th>2</th>
+                      <th>TC</th>
+                      <th>$166.000</th>
+                      <th><input type="checkbox" value="option1" aria-label="..."></th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+          </div>
+        </div>
       </div>
-    </div><!--CONTAINER-FLUID-->
-
     
+    </div>
+
+        
 
    
   <script src="resources/jquery-2.1.4.min.js"></script>

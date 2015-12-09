@@ -80,10 +80,10 @@ p + p {
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 100%;
-  height: 30px;
-  padding: 8px 12px;
-  font-size: 24px;
+  width: 170%;
+  height: 25px;
+  padding: 4px 6px;
+  font-size: 16px;
   line-height: 20px;
   border: 2px solid #ccc;
   -webkit-border-radius: 4px;
@@ -111,7 +111,7 @@ p + p {
 }
 
 .tt-menu {
-  width: 100%;
+  width: 170%;
   margin: 12px 0;
   padding: 4px 0;
   background-color: #fff;
@@ -127,7 +127,7 @@ p + p {
 
 .tt-suggestion {
   padding: 3px 10px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
 }
 
@@ -154,5 +154,5 @@ p + p {
   background: #4E8ACD;
 }
 .bloodhound{
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
