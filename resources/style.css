@@ -80,8 +80,7 @@ p + p {
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 396px;
-  height: 25px;
+  width: 100% !important;
   padding: 4px 6px;
   font-size: 16px;
   line-height: 20px;
@@ -111,7 +110,7 @@ p + p {
 }
 
 .tt-menu {
-  width: 422px;
+  width: 100% !important;
   margin: 12px 0;
   padding: 4px 0;
   background-color: #fff;
@@ -153,6 +152,9 @@ p + p {
 .well{
   background: #4E8ACD;
 }
-.bloodhound{
-  padding-bottom: 15px;
+.twitter-typeahead{
+    width: 100%;
+}
+.form-group{
+    padding: 0.6%;
 }
