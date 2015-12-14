@@ -7,6 +7,10 @@ var SCP = 1.0603;
 var TIMV = 0.01;
 var SMMN = 667;
 var TNA = TIMV * 12;
+var allow = true;
+var amountAux = null;
+var discountsAux = null;
+var salaryAux = null;
 var userDebt = {
     "1144044549" : {
         "resp" : [
@@ -193,6 +197,7 @@ function paintsMonths(data){
 //events
 $("#amountRequired").change(function(){
     var amount = parseInt($(this).val());
+    amountAux = amount;
     var options = $("#amountMonth").find("option");
     $("#errorAmount").hide();
     if( amount >= AMOUNTH_0 && amount < AMOUNTH_1){
@@ -210,8 +215,21 @@ $("#amountRequired").change(function(){
         paintsMonths(months["4"]);
     }else{
         $("#errorAmount").show();
-    } 
+    }
+    allow = true;
+    vc = 0;
 
+});
+$("#salary").change(function(){
+    salaryAux = $(this).val();        
+    allow =true;
+    vc = 0;
+});
+
+$("#discounts").change(function(){
+    discountsAux = $(this).val();
+    allow=true;
+    vc = 0;
 });
 Number.prototype.format = function(n, x) {
         var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
@@ -219,7 +237,7 @@ Number.prototype.format = function(n, x) {
                     };
 var disp1 = function(){
     salary = parseInt($("#salary").val());
-    return salary - expenFamily() - tq() - vc; 
+    return salary - expenFamily() - tq() + vc; 
 }
 
 var disp2 = function(){
@@ -247,18 +265,8 @@ function paintDeb(data){
     });
 
 }
-var interval = setInterval(function(){
-    var company = $("#companyName").val();
-    var amount = $("#amountRequired").val();
-    var time = $("#amountMonth").val();
-    var type = $("#creditType").val();
-    var scp = $("#secureProtect").val();
-    var name = $("#name").val();
-    var lastname = $("#lastname").val();
-    var salary = $("#salary").val();
-    var discounts = $("#discounts").val();
-    if(company != "" && amount != "" && time != "" && type != "" && scp != "" && name != "" && lastname  != "" && salary != "" && discounts != ""){
-        $("#cws").html("$ "+cws().format());
+function calculateAccept(){
+         $("#cws").html("$ "+cws().format());
         if($("#creditType").val() == 1){
             min = ( disp1() > disp2() ? disp2() : disp1() );
             if(cws() > min){
@@ -274,13 +282,35 @@ var interval = setInterval(function(){
              if(cws() > min){
                 $("#rejected").show();
                 $("#accepted").hide();
-                buyDebts.style.display = "";
-                paintDeb(userDebt[documentId.value].resp);
             }else{
                 $("#accepted").show();
                 $("#rejected").hide();
             }
            
         }
+        if(allow){
+            buyDebts.style.display = "";
+            paintDeb(userDebt[documentId.value].resp);
+            allow=false;
+
+        }
+
+}
+
+var interval = setInterval(function(){
+    var company = $("#companyName").val();
+    var amount = $("#amountRequired").val();
+    var time = $("#amountMonth").val();
+    var type = $("#creditType").val();
+    var scp = $("#secureProtect").val();
+    var name = $("#name").val();
+    var lastname = $("#lastname").val();
+    var salary = $("#salary").val();
+    var discounts = $("#discounts").val();
+    if(company != "" && amount != "" && time != "" && type != "" && scp != "" && name != "" && lastname  != "" && salary != "" && discounts != "" ){
+            amountAux = amount;
+            salaryAux = salary;
+            discountsAux = discounts;
+            calculateAccept();
     }
 }, 1000);
