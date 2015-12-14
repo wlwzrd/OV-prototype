@@ -220,6 +220,17 @@ $("#amountRequired").change(function(){
     vc = 0;
 
 });
+$("#creditType").change(function(){
+    if($(this).val() == 1){
+       vc = 0;
+
+        buyDebts.style.display = "none";
+    }else{
+        vc = 0;
+
+        buyDebts.style.display = "";
+    }       
+});
 $("#salary").change(function(){
     salaryAux = $(this).val();        
     allow =true;
@@ -286,13 +297,14 @@ function calculateAccept(){
                 $("#accepted").show();
                 $("#rejected").hide();
             }
-           
-        }
-        if(allow){
-            buyDebts.style.display = "";
-            paintDeb(userDebt[documentId.value].resp);
-            allow=false;
+            if(allow){
+                buyDebts.style.display = "";
+                paintDeb(userDebt[documentId.value].resp);
+                allow=false;
 
+            }
+
+           
         }
 
 }
