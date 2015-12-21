@@ -7,6 +7,8 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/style.css">
     <script src="resources/libs/handlebars-v4.0.5.js"></script>
+    <script src="http://t4t5.github.io/sweetalert/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css">
   </head>
 
   <body>
@@ -22,7 +24,7 @@
           <p class="navbar-text navbar-right"> Simulador de créditos de libranza y Solicitudes</p>
       </div>
     </nav>
-    
+    <div id="simulator">
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">SIMULADOR</div>
@@ -78,12 +80,17 @@
                     </div>
                 </div>
                 <div class="container-fluid">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <input type="text" id="name" class='form-control' required placeholder="Nombre">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <input type="text" id="lastname" class="form-control" required placeholder="Apellido">
                     </div>
+                    <div class="form-group col-md-4">
+                        <input type="phone" id="phone" class="form-control" required placeholder="Celular">
+                    </div>
+
+
                 </div>
                 <div class="container-fluid">
                     <div class="form-group col-md-6">
@@ -118,8 +125,8 @@
               <div class="col-md-12" style="display:none;" id="buyDebts">
                 
               </div>
+            <div class="col-md-12 text-center"><button id="send"class=" btn btn-info">enviar</button></div>
             </div>
-
             </div>
         </div>
     </div>
@@ -296,7 +303,7 @@
     
     </div>
 
-        
+    </div>        
 
    
     <script src="resources/jquery-2.1.4.min.js"></script>
@@ -339,6 +346,8 @@
                   </tbody>
                 </table>
                 </script>
+		<script src="resources/js/loader/jquery.loader.js"></script>
+		<link href="resources/js/loader/jquery.loader.css" rel="stylesheet" />
 
     <script src="resources/js/models.js"></script>
 </body> 
