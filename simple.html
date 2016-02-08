@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,200" rel="stylesheet" type="text/css">
+    <link href="resources/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/style.css">
+    <script src="http://t4t5.github.io/sweetalert/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css">
+    <script src="resources/jquery-2.1.4.min.js"></script>
+    <script src="resources/js/angular.js"></script>
+</head>
+<body>
+   <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="resources/img/logo-banco_occid.png">
+                </a>
+                <p class="navbar-text navbar-right"> Simulador de créditos de libranza y Solicitudes </p>
+            </div>
+                <ul class="nav navbar-nav" id="menuHome">
+                    <li><a href="simple.html">simple</a></li>
+                    <li><a href="detallada.html">detallado</a></li>
+
+                </ul>
+
+        </div>
+    </nav>
+    <div id="simulator" ng-controller="simulator">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">SIMULADOR</div>
+                <div class="panel-body">
+                    <div class="form-group groupForm">
+                        <div id="bloodhound" class="bloodhound">
+                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                                <input class="typeahead form-control tt-hint" type="text" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                <input class="typeahead form-control tt-input" id="companyName" type="text" placeholder="Busca tu empresa " autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+                                <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Raleway, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                                <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                                    <div class="tt-dataset tt-dataset-states"></div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group groupForm">
+                        <div class="alert alert-danger"   ng-show="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired "id="errorAmount" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                                El monto solicitado debe ser mayor a $500.000 y menor a $ 120.000.000
+                        </div>
+                        <input type="number" min="0" class="form-control" id="amountRequired" placeholder="Ingresa el monto a solicitar" required="" ng-model="amountRequired">
+                                                                                                                                                                                         </div>
+                   
+                    <div class="container-fluid">
+                   
+                        <div class="form-group col-md-4">
+                            <label for="amountMonth">Cuotas</label>
+                            <select id="amountMonth" class="form-control"  ng-options="month.value for month in months.data" ng-model="month" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired " >
+                            </select>
+                            
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="creditType">Tipo de Credito</label>
+                            <select id="creditType" class="form-control" name="" required="" placeholder="Seleccione una opción"  ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                                <option value="1">Libre inversión</option>
+                                <option value="2">Compra de cartera</option>
+                            </select>
+                           
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="secureProtect">Seguro de cuota protegida</label>
+                            <select id="secureProtect" class="form-control" name="" required="" ng-model="seguro" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                                <option value="1">SI</option>
+                                <option value="2" selected>NO</option>
+                            </select>
+                           
+                        </div>
+                         
+                        
+                    </div>
+                    
+                    <div class="container-fluid">
+                    
+                        <div class="form-group col-md-4">
+                        
+                            <input type="text" id="name" class="form-control" required="" placeholder="Nombre" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                        
+                            <input type="text" id="lastname" class="form-control" required="" placeholder="Apellido" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                        
+                            <input type="phone" id="phone" class="form-control" required="" placeholder="Celular" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+
+
+
+
+
+                    </div>
+                    
+                    <div class="container-fluid">
+                    
+                        <div class="form-group col-md-6">
+                        
+                            <select type="text" id="name" class="form-control" required="" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                                <option value="1" hidden="" disable="">Tipo de documento</option>
+                                
+                                <option value="1">CC</option>
+                                
+                                <option value="2">CE</option>
+                                
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                        
+                            <input type="text" id="documentId" class="form-control" required="" placeholder="Documento de identidad" ng-model="documento" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="container-fluid">
+                    
+                        <div class="form-group col-md-6">
+                        
+                            <input type="text" id="salary" class="form-control" required="" placeholder="Ingresos" ng-model="salario" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+                        <div class="form-group col-md-6">
+                        
+                            <input type="text" id="discounts" class="form-control" required="" placeholder="Descuentos de nomina" ng-disabled="amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired ">
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                    
+                        <label for="cws" ng-hide="!salario"> Valor cuota mensual aproximada:  $ {{ cuota_sin_seguro }}</label> 
+                        
+                        <span id="cws"></span>
+                        
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                    
+                        <div class="alert alert-success" style="display:none;" id="accepted">Solicitud Aceptada! Pronto nos comunicaremos con usted</div>
+
+
+
+                        <div class="alert alert-danger" style="display:none;" id="rejected">Solicitud Rechazada! Lo sentimos!</div>
+                        
+                    </div>
+
+
+
+
+                    <div class="col-md-12" style="display:none;" id="buyDebts">
+                    
+
+                    
+                    </div>
+                    
+                    <div class="col-md-12 text-center"><button id="send" class="btn btn-info" ng-hide="(amountRequired < min_amounth || amountRequired > max_amounth || !amountRequired  || !salario || !month || !documento)">Solicitar</button></div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    <script src="resources/js/ctrl.js"></script>
+    <script src="resources/typeahead.bundle.js"></script>
+    <script src="resources/empresas.js"></script>
+    <script src="resources/js/functions.js"></script>
+</body>
+</html>
