@@ -292,6 +292,7 @@ function paintDeb(data){
             vc -= parseInt($(this).attr("value"));
         }
         $("#vc").html(vc);
+        calculateAccept();
     });
 
 }
@@ -318,10 +319,13 @@ $(".vcCheck").removeAttr("checked");
                 $("#accepted").hide();
 
                 $("#send").addClass("disabled");
+
+                $("#buyDebts").show();
             }else{
                 $("#accepted").show();
                 $("#rejected").hide();
                 $("#send").removeClass("disabled");
+                $("#buyDebts").hide();
             }
         }else{
             min = ( disp1() > disp2() ? disp2() : disp1() );
@@ -373,3 +377,12 @@ var interval = setInterval(function(){
 
     }
 }, 1000);
+
+if(location.hash == "#2"){
+    details = $("#buyDebts");
+    details.removeAttr("id");
+    details.addClass("hidden");
+    send = $("#send");
+    send.removeClass("disabled");
+
+}
