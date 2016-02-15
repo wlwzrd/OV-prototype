@@ -153,7 +153,6 @@ app.controller("simulator", function($scope){
     $scope.cuota_sin_seguro = 0;
     $scope.months = {}; // SCOPE FOR MONTHS
     $scope.$watch("month", function(_new, _old){
-        console.log(_new);   
     })
     $scope.$watch("amountRequired", function(_new, _old){ // Watch for amoount required:
         $scope.errorAmounth = false; // Scope for amount fail
@@ -184,9 +183,6 @@ app.controller("simulator", function($scope){
     $scope.$watch("vc", function(_new, _old){
         $scope.disponible_1 = $scope.salario - $scope.gastos_familiares - $scope.tq + _new;
         $scope.disponible_2 = $scope.salario = $scope.proteccion_salarial - $scope.descuentos;
-        console.log($scope.cuota_sin_seguro);
-        console.log($scope.disponible_1);
-        console.log($scope.disponible_2);
         
 
 
@@ -296,8 +292,9 @@ app.controller('advanced', function($scope){
         }
 
     });
+
+    $scope.vc = 0;
     $scope.$watch("tipo_credito", function(_new, _old){
-        console.log($scope.tipo_credito);
     });
     $scope.$watchGroup(['monto_requerido', 'month', "tipo_credito", "seguro", "nombre", "apellido", "telefono", "documento", "salario", "descuento"], function(newValues, oldValues){
         if( $scope.monto_requerido
@@ -321,15 +318,12 @@ app.controller('advanced', function($scope){
             };
             $scope.deudas = params.USERS[$scope.documento].resp;
             $scope.tq = aux;
-            $scope.vc = 0;
             $scope.disponible_2 = $scope.salario - $scope.proteccion_salarial - $scope.descuento;
             $scope.disponible_1 = $scope.salario - $scope.gastos_familiares - $scope.tq + $scope.vc;
 
             $scope.cuota = Math.round($scope.monto_requerido * ((TIMV * (Math.pow((1+TIMV), $scope.month.value ))) / (Math.pow((1 + TIMV), $scope.month.value ) -1)));
             $scope.min = $scope.disponible_2 < $scope.disponible_1 ? $scope.disponible_2 : $scope.disponible_1;
-            console.log($scope.disponible_1);
 
-            console.log($scope.tipo_credito);
 
             $scope.addVC = function(value){
                 if(this.confirm){
@@ -342,9 +336,19 @@ app.controller('advanced', function($scope){
 
                 $scope.min = $scope.disponible_2 < $scope.disponible_1 ? $scope.disponible_2 : $scope.disponible_1;
             }
+            
+            console.clear();
 
+            console.log("disponible 1 : " + $scope.disponible_1);
+
+            console.log("disponible 2 : " + $scope.disponible_2);
+
+            console.log("cuota : " + $scope.cuota);
+
+            console.log("tq : " + $scope.tq);
+
+            console.log("vc : "+ $scope.vc);
         }else{
-            console.log($scope.descuento)
         }
     });
 })
