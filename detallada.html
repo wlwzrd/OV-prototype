@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group groupForm">
-                        <div class="alert alert-danger"   ng-show="monto_requerido < min_amounth || monto_requerido > max_amounth || !monto_requerido "id="errorAmount" role="alert">
+                        <div class="alert alert-danger"   ng-show="monto_requerido && (monto_requerido < min_amounth || monto_requerido > max_amounth || !monto_requerido) "id="errorAmount" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <span class="sr-only">Error:</span>
                                 El monto solicitado debe ser mayor a $500.000 y menor a $ 120.000.000
@@ -159,7 +159,7 @@
 
                     <div class="form-group col-md-6">
                     
-                        <div class="alert alert-success" ng-if="cuota < min && tipo_credito.value == 2" id="accepted">Solicitud Aceptada! Pronto nos comunicaremos con usted</div>
+                        <div class="alert alert-success" ng-if="cuota < min && tipo_credito.value == 2" id="accepted">Solicitud Aceptada! Presione solicitar y pronto nos comunicaremos con usted</div>
 
 
 
@@ -170,7 +170,7 @@
 
 
 
-                    <div class="col-md-12 row "  id="buyDebts" ng-show="tipo_credito.value == 2 && salario > 0 ">
+                    <div class="col-md-12 row "  id="buyDebts" ng-show="(tipo_credito.value == 2 && salario > 0)" ng-hide="cuota < min || !cuota">
                         <table class="col-md-12 table table-striped">
                             <tr>
                                 <td>Entidad</td>
@@ -183,7 +183,7 @@
                                 <td>{{x.type}}</td>
                                 <td>{{x.amount | currency:$:0}}</td>
                                 <td>
-                                    <input type="checkbox"  ng-model="confirm" ng-change="addVC({{x.amount}})">
+                                    <input type="checkbox" class="checkAmount" ng-model="confirm" ng-change="addVC({{x.amount}})" data-amount="{{x.amount}}" ng-change="addVC({{x.amount}})">
                                 </td>
                             </tr>
                             <tr>
