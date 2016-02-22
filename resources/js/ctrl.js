@@ -218,10 +218,12 @@ app.controller("simulator", function($scope){
         }
         $scope.gastos_familiares = parseFloat($scope.salario) * parseFloat($scope.gastos_familiares);
         $scope.tq = 0;
+        $scope.$watch("tq", function(){
+            console.log("tq: "+ $scope.tq);
+        });
         $scope.proteccion_salarial = $scope.salario * 0.92 * 0.5;
         $scope.$watch("documento", function(_new,_old){
             if(params.USERS[_new]){
-
                 $scope.deudas = params.USERS[_new].resp;
                 resp = params.USERS[_new].resp;
                 total = 0;
@@ -307,14 +309,20 @@ app.controller('advanced', function($scope){
             && $scope.documento 
             && $scope.salario
             && $scope.descuento){
-
+            $scope.$watch("tipo_credito", function(){
+                if($scope.tipo_credito.value == 1){
+                    $scope.vc = 0;
+                }else{
+                    $scope.vc = $scope.vc_real ? $scope.vc_real : 0;
+                }
+            });
             $scope.proteccion_salarial = $scope.salario * 0.92 * 0.5; 
             $scope.cantidad_minimos = $scope.salario / params.MIN;
             $scope.valor_calculo_gastos = ($scope.cantidad_minimos < 3 ? 0.5 : ( $scope.cantidad_minimos >=3 && $scope.cantidad_minimos <= 5 ? 0.45 : ( $scope.cantidad_minimos > 5 && $scope.cantidad_minimos <= 10 ? 0.40 : ( $scope.cantidad_minimos >10 && $scope.cantidad_minimos <= 20 ? 0.35 : 0.3) ) ));
             $scope.gastos_familiares = $scope.salario * $scope.valor_calculo_gastos;
             aux = 0;
             for(val of params.USERS[$scope.documento].resp){
-                aux =+ val.amount;    
+                aux += val.amount;    
             };
             $scope.deudas = params.USERS[$scope.documento].resp;
             $scope.tq = aux;
@@ -336,8 +344,24 @@ app.controller('advanced', function($scope){
 
                 $scope.min = $scope.disponible_2 < $scope.disponible_1 ? $scope.disponible_2 : $scope.disponible_1;
             }
-            
+
             console.clear();
+
+            $scope.$watch("vc", function(){
+                if($scope.tipo_credito.value == 2){
+                    $scope.vc_real = $scope.vc;
+                }
+                console.log("disponible 1 : " + $scope.disponible_1);
+
+                console.log("disponible 2 : " + $scope.disponible_2);
+
+                console.log("cuota : " + $scope.cuota);
+
+                console.log("tq : " + $scope.tq);
+
+                console.log("vc : "+ $scope.vc);
+           
+            })
 
             console.log("disponible 1 : " + $scope.disponible_1);
 
