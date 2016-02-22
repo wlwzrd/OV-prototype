@@ -39,7 +39,7 @@ Object.defineProperty(params, 'USERS', {
                 {
                     "type" : "CP",
                     "amount" : 320000,
-                    "bank" : "POPULAR"
+                    "bank" : "BOGOTA"
                 } 
             ]
         },
@@ -53,7 +53,7 @@ Object.defineProperty(params, 'USERS', {
                 {
                     "type" : "CP",
                     "amount" : 35000,
-                    "bank" : "POPULAR"
+                    "bank" : "BANCOLOMBIA"
                 } 
             ]
         },
@@ -67,7 +67,7 @@ Object.defineProperty(params, 'USERS', {
                 {
                     "type" : "CP",
                     "amount" : 320000,
-                    "bank" : "POPULAR"
+                    "bank" : "BBVA"
                 } 
             ]
         },
